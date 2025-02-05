@@ -4,6 +4,7 @@ import style from './pizzaCard.module.css';
 const PizzaCard = ({ name, ingredients, price, detail, photo }) => {
   return (
     <div className={style.containerCard}>
+      {         <button className={style.BotonCarrito}>Agregar a mi pedido por ${price}</button>}
       <div className={style.content}>
         <img src={photo} alt={name} className={style.photo} />
         <div className={style.textContainer}>
@@ -19,7 +20,6 @@ const PizzaCard = ({ name, ingredients, price, detail, photo }) => {
           <p className={style.detail}>{detail}</p>
         </div>
       </div>
-      <button className={style.BotonCarrito}>Agregar al carrito por ${price}</button>
     </div>
   );
 };
