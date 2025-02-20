@@ -1,0 +1,93 @@
+@primary-color: #E2D2BB;
+@font-size: 18px;
+@width: 100%;
+
+.containerCard {
+  background-color: @primary-color;
+  width: @width -10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 3%;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  position: relative;
+  border-right: 1em;
+
+  .content { /* Contenido dentro del contenedor */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: @width;
+  }
+
+  .photo { /* Imagen */
+    z-index: 1;
+    width: 40%;
+    height: auto;
+    border-radius: 100%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+
+  .textContainer { /* Contenedor de texto */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: @width;
+  }
+
+  p { /* Ingredientes */
+    margin: -2px;
+    color: #1F2B51;
+    font-family: 'Arial';
+    font-weight: 600;
+    font-size: @font-size -1px;
+  }
+
+  .detail { /* Detalles */
+    display: none;
+  }
+
+  .price {
+    color: #000000;
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+
+  .BotonCarrito {
+    position: absolute;
+    bottom: 0%;
+    z-index: 0;
+    width: 82%;
+    left: 18%;
+    height: 40px;
+    background-color: #1F2B51;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: @font-size;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: 'Gill Sans MT';
+    font-weight: 0;
+    text-align: right;
+
+    &:hover {
+      transition: all 0.8s;
+      background-color: #081029;
+      font-size: 18px;
+    }
+  }
+
+  h3 { /* Nombre de la pizza */
+    margin: 10px 10px 10px 20px;
+    font-size: 25px;
+    color: #DF361F;
+    font-family: cooper;
+  }
+}
