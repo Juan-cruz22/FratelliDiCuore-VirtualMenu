@@ -1,22 +1,26 @@
 import React from 'react';
-import style from'./pizzaCard.module.less';
+import style from './pizzaCard.module.less';
 
 const PizzaCard = ({ name, ingredients, price, detail, photo }) => {
+
   return (
-    <div className={style.containerCard}>
-      <button className={style.BotonCarrito}>Agregar a mi pedido por ${price}</button>
-      <div className={style.content}>
-        <img src={photo} alt={name} className={style.photo} />
-        <div className={style.textContainer}>
-          <h3>{name}</h3>
-          {Array.isArray(ingredients) ? (
+    <div className={style.conteiner}>
+      <img className={style.image} src={photo} alt="Pizza" />
+      <div className={style.textContainer}>
+        <p className={style.name}>{name}</p>
+        <p className={style.ingredients}>
+        {Array.isArray(ingredients) ? (
             ingredients.map((ingredient, index) => (
-              <p key={index} className="ingredients">{ingredient}</p>
+              <p key={index}>{ingredient}</p>
             ))
           ) : (
             <p className="ingredients">{ingredients}</p>
           )}
-          <p className={style.detail}>{detail}</p>
+
+        </p>
+        <div className={style.divBottonPrice}>
+          <button className={style.button}>Agregar al carrito</button>
+          <div className={style.price}>${price}</div>
         </div>
       </div>
     </div>
