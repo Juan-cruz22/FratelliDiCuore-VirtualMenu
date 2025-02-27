@@ -52,22 +52,22 @@ const Detail = () => {
         <p className={style.precio}>${pizza.price}</p>
         <p className={style.extras}>EXTRAS ($2.500 cada uno)</p>
 
-        {/* Botones de extras */}
+        {/* Botones de extras con clases dinámicas */}
         <button
-          className={style.buttonAlb}
+          className={`${style.buttonAlb} ${selectedExtras.includes("Pesto de Albahaca") ? style.selectedGreen : ""}`}
           onClick={() => handleExtraChange("Pesto de Albahaca")}
         >
           Pesto de Albahaca
         </button>
         <button
-          className={style.buttonDia}
+          className={`${style.buttonDia} ${selectedExtras.includes("Salsa Diavola") ? style.selectedRed : ""}`}
           onClick={() => handleExtraChange("Salsa Diavola")}
         >
           Salsa Diavola
         </button>
         <div>
           <button
-            className={style.buttonBR}
+            className={`${style.buttonBR} ${selectedExtras.includes("Borde relleno") ? style.selectedOrange : ""}`}
             onClick={() => handleExtraChange("Borde relleno")}
           >
             Borde relleno
