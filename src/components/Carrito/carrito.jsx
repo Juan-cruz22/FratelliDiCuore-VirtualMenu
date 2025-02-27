@@ -13,12 +13,8 @@ const Carrito = () => {
 
   React.useEffect(() => {
     if (location.pathname === "/Carrito") {
-      document.body.style.backgroundColor = "blue";
-    }
-
-    return () => {
       document.body.style.backgroundColor = "";
-    };
+    }
   }, [location.pathname]);
 
   const handleEliminarPizza = (index) => {
@@ -29,35 +25,33 @@ const Carrito = () => {
     let total = 0;
 
     carrito.forEach((pizza) => {
-      total += calcularPrecioTotal(pizza, pizza.extras, precioExtra); // Usamos calcularPrecioTotal aquí
+      total += calcularPrecioTotal(pizza, pizza.extras, precioExtra);
     });
 
     return total;
   };
 
   return (
-    <div>
+    <div className={style.mainContainer}>
       <img className={style.imgHead} src={header} alt="Header Carrito" />
       <div className={style.pedido}>
         <h1 className={style.titulo}>Mi Pedido</h1>
         <div>
           {carrito.length === 0 ? (
-            <p>No has agregado ninguna pizza al carrito.</p>
+            <p className={style.noAdd}>No has agregado ninguna pizza al carrito.</p>
           ) : (
             <div>
               {carrito.map((pizza, index) => (
                 <div key={index} className={style.pizzaItem}>
-                  <p>{pizza.name}</p>
-                  <p>${pizza.price}</p>
+                  <p className={style.addName}>{pizza.name}</p>
+                  <p className={style.addPrice}>${pizza.price}</p>
                   {/* Mostrar los extras seleccionados */}
                   {pizza.extras && pizza.extras.length > 0 && (
-                    <div>
-                      <p>Extras:</p>
-                      <ul>
+                    <div className={style.contExtras}>
+                      <p className={style.extra}>Extras:</p>
                         {pizza.extras.map((extra, index) => (
-                          <li key={index}>{extra}</li>
+                          <p className={style.extras} key={index}>{extra} x ${precioExtra}</p>
                         ))}
-                      </ul>
                     </div>
                   )}
                   {/* Botón para eliminar la pizza */}
@@ -65,15 +59,26 @@ const Carrito = () => {
                     className={style.buttonEliminar}
                     onClick={() => handleEliminarPizza(index)}
                   >
-                    Eliminar
+                    Borrar
                   </button>
                 </div>
               ))}
             </div>
           )}
           <div>
-            <p><strong>Total:</strong> ${calcularTotal()}</p>
+            <p className={style.total}>Total: ${calcularTotal()}</p>
           </div>
+              <h3>Metodo de pago</h3>
+            <div className={style.buttonsPagos}>
+              <button className={style.efectivo}>Efectivo</button>
+              <button className={style.transferencia}>Transferencia</button>
+            </div>
+            <div>
+              <h3>Elige tu metodo de entrega</h3>
+              <button className={style.Delivery}>Delivery</button>
+              <button className={style.TakeAway}>Take away</button>
+            </div>
+
         </div>
         <div className={style.buttonCompletar}>
           <button className={style.buttonRealizar}>Realizar pedido</button>
