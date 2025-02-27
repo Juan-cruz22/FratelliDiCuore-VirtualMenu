@@ -1,7 +1,14 @@
 import React from 'react';
 import style from './pizzaCard.module.less';
+import { useNavigate } from 'react-router-dom';
 
 const PizzaCard = ({ name, ingredients, price, detail, photo }) => {
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/Detail")
+  }
 
   return (
     <div className={style.conteiner}>
@@ -19,7 +26,7 @@ const PizzaCard = ({ name, ingredients, price, detail, photo }) => {
 
         </p>
         <div className={style.divBottonPrice}>
-          <button className={style.button}>Agregar al carrito</button>
+          <button className={style.button} onClick={handleClick}>Agregar al carrito</button>
           <div className={style.price}>${price}</div>
         </div>
       </div>
