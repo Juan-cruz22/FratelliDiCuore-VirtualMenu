@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import style from "./detail.module.less";
 import pizzaData from "../../Data";
 import { useCarrito } from "../../context/carritoContext";
+import { calcularPrecioTotal } from "../../Utils/Utils";
 
 const Detail = () => {
   const navigate = useNavigate();
@@ -11,15 +12,6 @@ const Detail = () => {
 
   const [selectedExtras, setSelectedExtras] = useState([]);
   const precioExtra = 2500;
-
-  const calcularPrecioTotal = (pizza) => {
-    const pizzaPrice = Number(pizza.price); 
-    const extrasPrice = selectedExtras.length * precioExtra;
-
-    const totalPrice = pizzaPrice + extrasPrice;
-
-    return totalPrice;
-  };
 
   const handleBackClick = () => {
     navigate(`/`);
@@ -59,7 +51,6 @@ const Detail = () => {
       <h1 className={style.nombre}>{pizza.name}</h1>
       <p className={style.detalle}>{pizza.detail}</p>
       <div className={style.contPrice}>
-        {/* Formatear el precio de la pizza a dos decimales */}
         <p className={style.precio}>${pizza.price}</p>
         <p className={style.extras}>EXTRAS ($2.500 cada uno)</p>
 
@@ -87,7 +78,7 @@ const Detail = () => {
           className={style.buttonPedido}
           onClick={() => handleAddToCart(pizza)}
         >
-          Agregar a mi pedido (${calcularPrecioTotal(pizza)})
+          Agregar a mi pedido (${calcularPrecioTotal(pizza, selectedExtras, precioExtra)})
         </button>
       </div>
     </div>
