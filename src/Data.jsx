@@ -10,7 +10,7 @@ export default [
         name:'Marinara',
         ingredients: ["Salsa de tomate", "Oregano", "Ajo", "Albahaca"],
         price:'5.300',
-        detail:'Muy rica',
+        detail:'La base es una exquisita salsa de tomate casera, contiene tiene ajo, oregano y hojas de albahaca (No contiene queso)',
         photo: Marinara,
     },
     {

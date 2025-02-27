@@ -7,7 +7,7 @@ const PizzaCard = ({ name, ingredients, price, detail, photo }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/Detail")
+    navigate(`/Detail/${name}`);
   }
 
   return (
@@ -16,14 +16,13 @@ const PizzaCard = ({ name, ingredients, price, detail, photo }) => {
       <div className={style.textContainer}>
         <p className={style.name}>{name}</p>
         <p className={style.ingredients}>
-        {Array.isArray(ingredients) ? (
+          {Array.isArray(ingredients) ? (
             ingredients.map((ingredient, index) => (
               <p key={index}>{ingredient}</p>
             ))
           ) : (
             <p className="ingredients">{ingredients}</p>
           )}
-
         </p>
         <div className={style.divBottonPrice}>
           <button className={style.button} onClick={handleClick}>Agregar al carrito</button>
