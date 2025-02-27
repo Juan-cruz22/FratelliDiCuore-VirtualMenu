@@ -1,13 +1,13 @@
 import React from "react";
-import Head from "../Head.png";
+import head from "../Head.png";
 import style from "../Head/head.module.css"
 
-const head = () => {
+const Head = () => {
     return(
         <div className={style.divhead}>
-            <img className={style.image} src={Head}></img>
+            <img className={style.image} src={head}></img>
         </div>
     )
 }
 
-export default head;
+export default Head;
