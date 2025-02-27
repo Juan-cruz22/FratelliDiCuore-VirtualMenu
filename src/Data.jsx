@@ -1,5 +1,9 @@
 import Margherita from "../src/Photos/Margherita.png";
 import Caprese from "../src/Photos/Caprese.png";
+import Marinara from "../src/Photos/Marinara.jpg";
+import Muzza from "../src/Photos/Muzza.jpg";
+import Caramelita from "../src/Photos/Caramelita.jpg"
+
 
 export default [
     {
@@ -7,21 +11,21 @@ export default [
         ingredients: ["Salsa de tomate", "Oregano", "Ajo", "Albahaca"],
         price:'5.300',
         detail:'Muy rica',
-        photo: Margherita,
+        photo: Marinara,
     },
     {
         name:'Muzza',
         ingredients: ["Salsa de tomate", "Mozzarella", "Oregano"],
         price:'7.500',
         detail:'Muy rica',
-        photo: Margherita,
+        photo: Muzza,
     },
     {
         name:'Caramelita',
         ingredients: ["Aceite de oliva", "Mozzarella", "Cebolla caramelizada", "Romero"],
         price:'7.800',
         detail:'Muy rica',
-        photo: Margherita,
+        photo: Caramelita,
     },
     {
         name:'Margherita',
