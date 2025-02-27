@@ -1,10 +1,19 @@
 import React from "react";
-import style from "./buttonCarrito.module.css"
+import { useNavigate } from "react-router-dom"; // Importamos useNavigate
+import style from "./buttonCarrito.module.css";
 
-const ButtonCarrito = () =>{
-    return(
+const ButtonCarrito = () => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate("/Detail");
+    };
+
+    return (
         <div className={style.buttonContainer}>
-            <button className={style.buttonCarrito}>Ver mi pedido</button>
+            <button className={style.buttonCarrito} onClick={handleClick}>
+                Ver mi pedido
+            </button>
         </div>
     );
 }
