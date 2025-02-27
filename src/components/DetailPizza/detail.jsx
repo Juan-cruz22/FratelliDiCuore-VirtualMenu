@@ -10,6 +10,16 @@ const Detail = () => {
   const { agregarPizzaAlCarrito } = useCarrito();
 
   const [selectedExtras, setSelectedExtras] = useState([]);
+  const precioExtra = 2500;
+
+  const calcularPrecioTotal = (pizza) => {
+    const pizzaPrice = Number(pizza.price); 
+    const extrasPrice = selectedExtras.length * precioExtra;
+
+    const totalPrice = pizzaPrice + extrasPrice;
+
+    return totalPrice;
+  };
 
   const handleBackClick = () => {
     navigate(`/`);
@@ -21,7 +31,7 @@ const Detail = () => {
       extras: selectedExtras,
     };
     agregarPizzaAlCarrito(pizzaConExtras);
-    navigate(`/Carrito`); 
+    navigate(`/`);
   };
 
   const handleExtraChange = (extra) => {
@@ -49,10 +59,11 @@ const Detail = () => {
       <h1 className={style.nombre}>{pizza.name}</h1>
       <p className={style.detalle}>{pizza.detail}</p>
       <div className={style.contPrice}>
+        {/* Formatear el precio de la pizza a dos decimales */}
         <p className={style.precio}>${pizza.price}</p>
         <p className={style.extras}>EXTRAS ($2.500 cada uno)</p>
 
-        {/* Botones de extras con clases dinámicas */}
+        {/* Botones de extras */}
         <button
           className={`${style.buttonAlb} ${selectedExtras.includes("Pesto de Albahaca") ? style.selectedGreen : ""}`}
           onClick={() => handleExtraChange("Pesto de Albahaca")}
@@ -65,20 +76,18 @@ const Detail = () => {
         >
           Salsa Diavola
         </button>
-        <div>
-          <button
-            className={`${style.buttonBR} ${selectedExtras.includes("Borde relleno") ? style.selectedOrange : ""}`}
-            onClick={() => handleExtraChange("Borde relleno")}
-          >
-            Borde relleno
-          </button>
-        </div>
+        <button
+          className={`${style.buttonBR} ${selectedExtras.includes("Borde relleno") ? style.selectedOrange : ""}`}
+          onClick={() => handleExtraChange("Borde relleno")}
+        >
+          Borde relleno
+        </button>
 
         <button
           className={style.buttonPedido}
           onClick={() => handleAddToCart(pizza)}
         >
-          Agregar a mi pedido (${pizza.price})
+          Agregar a mi pedido (${calcularPrecioTotal(pizza)})
         </button>
       </div>
     </div>
