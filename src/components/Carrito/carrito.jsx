@@ -4,6 +4,8 @@ import style from "./carrito.module.less";
 import header from "../headCarrito.png";
 import { useCarrito } from "../../context/carritoContext";
 import { calcularPrecioTotal } from "../../Utils/Utils";
+import Metodos from "./metodos/metodos";
+
 
 const Carrito = () => {
   const location = useLocation();
@@ -33,53 +35,40 @@ const Carrito = () => {
 
   return (
     <div className={style.mainContainer}>
-      <img className={style.imgHead} src={header} alt="Header Carrito" />
-      <div className={style.pedido}>
-        <h1 className={style.titulo}>Mi Pedido</h1>
-        <div>
-          {carrito.length === 0 ? (
-            <p className={style.noAdd}>No has agregado ninguna pizza al carrito.</p>
-          ) : (
+    <img className={style.imgHead} src={header} alt="Header Carrito" />
+        <div className={style.pedido}>
+          <h1 className={style.titulo}>Mi Pedido</h1>
             <div>
-              {carrito.map((pizza, index) => (
-                <div key={index} className={style.pizzaItem}>
+              {carrito.length === 0 ? (
+              <p className={style.noAdd}>No has agregado ninguna pizza al carrito.</p>
+              ) : (
+          <div>
+            {carrito.map((pizza, index) => (
+              <div key={index} className={style.pizzaItem}>
+                <div className={style.nameandprice}>
                   <p className={style.addName}>{pizza.name}</p>
                   <p className={style.addPrice}>${pizza.price}</p>
-                  {/* Mostrar los extras seleccionados */}
-                  {pizza.extras && pizza.extras.length > 0 && (
-                    <div className={style.contExtras}>
-                      <p className={style.extra}>Extras:</p>
-                        {pizza.extras.map((extra, index) => (
-                          <p className={style.extras} key={index}>{extra} x ${precioExtra}</p>
-                        ))}
-                    </div>
-                  )}
-                  {/* Botón para eliminar la pizza */}
-                  <button
-                    className={style.buttonEliminar}
-                    onClick={() => handleEliminarPizza(index)}
-                  >
-                    Borrar
-                  </button>
                 </div>
-              ))}
-            </div>
-          )}
+            {(pizza.extras && pizza.extras.length > 0) ? (
+              <div className={style.contExtras}>
+                <p className={style.extra}>Extras:</p>
+                {pizza.extras.map((extra, index) => (
+                <p className={style.extras} key={index}>{extra} x ${precioExtra}</p>
+                ))}
+              </div>
+                ) : (
+              <div className={style.contExtras}>
+                <p className={style.extra}>Sin extras seleccionados</p>
+              </div>
+                )}
+                  <button className={style.buttonEliminar} onClick={() => handleEliminarPizza(index)}>Eliminar</button>
+          </div> ))}
+      </div>)}
           <div>
             <p className={style.total}>Total: ${calcularTotal()}</p>
           </div>
-              <h3>Metodo de pago</h3>
-            <div className={style.buttonsPagos}>
-              <button className={style.efectivo}>Efectivo</button>
-              <button className={style.transferencia}>Transferencia</button>
-            </div>
-            <div>
-              <h3>Elige tu metodo de entrega</h3>
-              <button className={style.Delivery}>Delivery</button>
-              <button className={style.TakeAway}>Take away</button>
-            </div>
-
-        </div>
+<Metodos/>
+    </div>
         <div className={style.buttonCompletar}>
           <button className={style.buttonRealizar}>Realizar pedido</button>
         </div>

@@ -1,14 +1,21 @@
 .mainContainer {
-    background-color: blue;
+    background-color: #172e79;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
   
   .imgHead {
-      width: 100%;
+        width: 100%;
   }
   
+  .pizzaItem{
+        display: flex;
+        margin: 20px;
+        align-items: center;
+
+  }
+
   .titulo {
       font-family: cooper;
   }
@@ -28,53 +35,56 @@
       margin-right: 11%;
       display: flex;
       flex-direction: column;
+      margin-bottom: 25px;
+  }
+
+  .nameandprice{
+    width: 40%;
   }
   
   .addName {
       font-size: 30px;
+      margin: 0;
       font-family: Afacad, sans-serif;
-      margin-bottom: -30px;
-      margin-top: 0px;
   }
   
   .addPrice {
       color: green;
+      margin: 0;
       font-size: 30px;
       font-family: Arial, Helvetica, sans-serif;
-      margin-bottom: 10px;
   }
   
   .contExtras {
+    width: 40%;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      width: 100%;
       height: auto;
-      margin-top: -20px;
   }
   
   .extra {
-      font-size: 20px;
-      margin-top: 10px;
+      font-size: 16px;
       text-align: center;
   }
   
   .extras {
       margin-top: -18px;
-      font-size: 20px;
+      font-size: 15px;
       display: block;
       text-align: center;
       width: 100%;
   }
   
   .buttonEliminar {
-      font-size: 15px;
-      border-color: red;
+    margin-left: 11px;
+      font-size: 13px;
+      border-style: none;
+      height: 30px;
       background-color: rgb(192, 0, 0);
       color: white;
-      margin-top: -20px;
-  }
+      }
   
   .total {
       font-size: 30px;
@@ -82,11 +92,6 @@
       font-weight: 800;
       border-bottom-style: dashed;
       border-bottom-color: #fcca88;
-  }
-
-  h3{
-    font-family: cooper;
-    font-size: 20px;
   }
   
   .buttonRealizar {
