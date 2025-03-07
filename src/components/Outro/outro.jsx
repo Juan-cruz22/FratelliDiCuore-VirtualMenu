@@ -45,21 +45,20 @@ const Outro = () => {
             ))}
         </div>
 
-        <h3>Metodo de entrega: {metodoEntrega}</h3>
+        <h3>Metodo de entrega:</h3>
+          <p>{metodoEntrega}</p>
         {metodoEntrega === "Delivery" && (
           <h4>Entrega {entregaDentroCasco || "no especificada"}</h4>
         )}
-        <h3>Metodo de pago: {metodoPago}</h3>
         {metodoEntrega === "Delivery" && (
           <div>
             <h4>Datos de entrega:</h4>
-            <p>Calle: {datosEntrega.calle}</p>
-            <p>Numero: {datosEntrega.numero}</p>
-            <p>Entre calles: {datosEntrega.entreCalles}</p>
+            <p>Calle: {datosEntrega.calle} {datosEntrega.numero} e/ {datosEntrega.entreCalles}</p>
             <p>Nombre: {datosEntrega.nombre}</p>
             <p>Telefono: {datosEntrega.telefono}</p>
           </div>
         )}
+                <h3>Metodo de pago: {metodoPago}</h3>
         <div className={style.totalContainer}>
           <p className={style.totalText}>Total del pedido: ${total}</p>
         </div>
