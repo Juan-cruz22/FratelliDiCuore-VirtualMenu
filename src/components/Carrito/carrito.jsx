@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import style from "./carrito.module.less";
 import header from "../headCarrito.png";
@@ -10,6 +10,11 @@ const Carrito = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { carrito, eliminarPizzaDelCarrito } = useCarrito();
+
+  // Estado para los métodos de entrega y pago
+  const [metodoEntrega, setMetodoEntrega] = useState("");
+  const [metodoPago, setMetodoPago] = useState("");
+  const [datosEntrega, setDatosEntrega] = useState({});
 
   const precioExtra = 2500;
 
@@ -31,20 +36,16 @@ const Carrito = () => {
     return total;
   };
 
-  // Función para manejar el click en el botón "Realizar pedido"
   const handleRealizarPedido = () => {
-    const metodoEntrega = location.state?.metodoEntrega || '';
-    const metodoPago = location.state?.metodoPago || '';
-    const datosEntrega = location.state?.datosEntrega || {};
-
+    // Navegar a la página Outro pasando los datos necesarios
     navigate("/Outro", {
       state: {
         carrito,
         total: calcularTotal(),
-        precioExtra,
         metodoEntrega,
         metodoPago,
         datosEntrega,
+        precioExtra,
       },
     });
   };
@@ -79,11 +80,8 @@ const Carrito = () => {
                       <p className={style.extra}>Sin extras seleccionados</p>
                     </div>
                   )}
-                  <button
-                    className={style.buttonEliminar}
-                    onClick={() => handleEliminarPizza(index)}
-                  >
-                    Eliminar
+                  <button className={style.buttonEliminar} onClick={() => handleEliminarPizza(index)}>
+                    X
                   </button>
                 </div>
               ))}
@@ -92,7 +90,11 @@ const Carrito = () => {
           <div>
             <p className={style.total}>Total: ${calcularTotal()}</p>
           </div>
-          <Metodos />
+          <Metodos 
+            setMetodoEntrega={setMetodoEntrega}
+            setMetodoPago={setMetodoPago}
+            setDatosEntrega={setDatosEntrega}
+          />
         </div>
         <div className={style.buttonCompletar}>
           <button className={style.buttonRealizar} onClick={handleRealizarPedido}>

@@ -33,10 +33,10 @@ const Metodos = ({ setMetodoEntrega, setMetodoPago, setDatosEntrega }) => {
   }
 
   const handleDatosEntrega = (e) => {
-    setDatosEntrega({
-      ...datosEntrega,
+    setDatosEntrega(prevState => ({
+      ...prevState,
       [e.target.name]: e.target.value
-    });
+    }));
   }
 
   return (
@@ -86,6 +86,7 @@ const Metodos = ({ setMetodoEntrega, setMetodoPago, setDatosEntrega }) => {
     </div>
   );
 };
+
 
 
 export default Metodos;
