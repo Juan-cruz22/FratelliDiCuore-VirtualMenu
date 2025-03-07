@@ -2,7 +2,7 @@ import React from 'react';
 import style from './pizzaCard.module.less';
 import { useNavigate } from 'react-router-dom';
 
-const PizzaCard = ({ name, ingredients, price, detail, photo }) => {
+const PizzaCard = ({ name, ingredients, price, photo }) => {
 
   const navigate = useNavigate();
 

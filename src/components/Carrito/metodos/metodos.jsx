@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import style from "../metodos/metodos.module.less";
 
-const Metodos = ({ setMetodoEntrega, setMetodoPago, setDatosEntrega }) => {
+const Metodos = ({ setMetodoEntrega, setMetodoPago, setDatosEntrega, setDeliveryTipoSelected }) => {
   const precioDelivery = 1700;
 
   const [isTakeAwaySelected, setIsTakeAwaySelected] = useState(false);
@@ -25,11 +25,13 @@ const Metodos = ({ setMetodoEntrega, setMetodoPago, setDatosEntrega }) => {
   const handleDeliveryDentro = () => {
     setDeliveryDentroSelected(true);
     setDeliveryFueraSelected(false);
+    setDeliveryTipoSelected("Dentro del casco")
   };
 
   const handleDeliveryFuera = () => {
     setDeliveryFueraSelected(true);
     setDeliveryDentroSelected(false);
+    setDeliveryTipoSelected("Fuera del casco")
   }
 
   const handleDatosEntrega = (e) => {

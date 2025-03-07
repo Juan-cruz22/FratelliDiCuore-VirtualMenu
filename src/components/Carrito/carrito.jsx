@@ -11,10 +11,10 @@ const Carrito = () => {
   const navigate = useNavigate();
   const { carrito, eliminarPizzaDelCarrito } = useCarrito();
 
-  // Estado para los métodos de entrega y pago
   const [metodoEntrega, setMetodoEntrega] = useState("");
   const [metodoPago, setMetodoPago] = useState("");
   const [datosEntrega, setDatosEntrega] = useState({});
+  const [deliveryTipoSelected, setDeliveryTipoSelected] = useState("")
 
   const precioExtra = 2500;
 
@@ -37,7 +37,6 @@ const Carrito = () => {
   };
 
   const handleRealizarPedido = () => {
-    // Navegar a la página Outro pasando los datos necesarios
     navigate("/Outro", {
       state: {
         carrito,
@@ -46,8 +45,10 @@ const Carrito = () => {
         metodoPago,
         datosEntrega,
         precioExtra,
+        deliveryTipoSelected
       },
     });
+    
   };
 
   return (
@@ -94,6 +95,7 @@ const Carrito = () => {
             setMetodoEntrega={setMetodoEntrega}
             setMetodoPago={setMetodoPago}
             setDatosEntrega={setDatosEntrega}
+            setDeliveryTipoSelected={setDeliveryTipoSelected}
           />
         </div>
         <div className={style.buttonCompletar}>

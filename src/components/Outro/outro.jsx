@@ -13,6 +13,7 @@ const Outro = () => {
     datosEntrega,
     precioExtra,
     entregaDentroCasco,
+    deliveryTipoSelected
   } = location.state || {};
 
   const state = "Pendiente";
@@ -47,9 +48,11 @@ const Outro = () => {
 
         <h3>Metodo de entrega:</h3>
           <p>{metodoEntrega}</p>
-        {metodoEntrega === "Delivery" && (
-          <h4>Entrega {entregaDentroCasco || "no especificada"}</h4>
-        )}
+          {deliveryTipoSelected ? (
+  <h4>Entrega seleccionada: {deliveryTipoSelected}</h4>
+) : (
+  <h4>Entrega no especificada</h4>
+)}
         {metodoEntrega === "Delivery" && (
           <div>
             <h4>Datos de entrega:</h4>
@@ -58,7 +61,7 @@ const Outro = () => {
             <p>Telefono: {datosEntrega.telefono}</p>
           </div>
         )}
-                <h3>Metodo de pago: {metodoPago}</h3>
+        
         <div className={style.totalContainer}>
           <p className={style.totalText}>Total del pedido: ${total}</p>
         </div>
